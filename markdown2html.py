@@ -6,6 +6,7 @@ import os
 import sys
 import markdown
 
+
 def convertMarkdownToHtml(markdown_file, output_file):
     try:
         with open(markdown_file, 'r') as md_file:
@@ -18,15 +19,15 @@ def convertMarkdownToHtml(markdown_file, output_file):
     except FileNotFoundError:
         sys.exit(1)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
+        print("Usage: ./markdown2html.py README.md README.html",
+              file=sys.stderr)
         sys.exit(1)
-
 
     if not os.path.exists(sys.argv[1]):
         print(f"Missing {sys.argv[1]}", file=sys.stderr)
         sys.exit(1)
-    
+
     convertMarkdownToHtml(sys.argv[1], sys.argv[2])
     sys.exit(0)
