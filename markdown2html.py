@@ -13,7 +13,7 @@ def convert_markdown_to_html(markdown_file, output_file):
 
     with open(markdown_file, 'r') as md_file:
         markdown_content = md_file.read()
-        html_content = markdown.markdown(markdown_content)
+        html_content = markdown.markdown(markdown_content, extensions=['markdown.extensions.extra'])
 
         with open(output_file, 'w') as html_file:
             html_file.write(html_content)
