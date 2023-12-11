@@ -10,7 +10,7 @@ import markdown
 
 
 def convert_markdown_to_html(markdown_file, output_file):
-    # Check if the Markdown file exists
+    """Check if the Markdown file exists"""
     if not os.path.exists(markdown_file):
         sys.stderr.write("Missing " + markdown_file + "\n")
         exit(1)
@@ -26,7 +26,7 @@ def convert_markdown_to_html(markdown_file, output_file):
 
 
 if __name__ == "__main__":
-    # Check if the correct number of arguments is provided
+    """Check if the correct number of arguments is provided"""
     if len(sys.argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html")
         exit(1)
