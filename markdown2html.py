@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
     script markdown2html.py that takes an argument 2 strings:
