@@ -8,7 +8,6 @@ import sys
 import os
 import markdown
 
-
 def convert_markdown_to_html(markdown_file, output_file):
     """Check if the Markdown file exists"""
     if not os.path.exists(markdown_file):
@@ -16,12 +15,14 @@ def convert_markdown_to_html(markdown_file, output_file):
         exit(1)
 
     with open(markdown_file, 'r') as md_file:
+        """read Markdown file"""
         markdown_content = md_file.read()
         html_content = markdown.markdown(
             markdown_content,
             extensions=['markdown.extensions.nl2br'])
 
         with open(output_file, 'w') as html_file:
+            """write Markdown"""
             html_file.write(html_content)
 
 
