@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""Convert Markdown to html"""
+"""
+Convert Markdown to html
+"""
 
 import sys
 import os
 import markdown
+
 
 def convert_markdown_to_html(markdown_file, output_file):
     # Check if the Markdown file exists
@@ -13,10 +16,13 @@ def convert_markdown_to_html(markdown_file, output_file):
 
     with open(markdown_file, 'r') as md_file:
         markdown_content = md_file.read()
-        html_content = markdown.markdown(markdown_content, extensions=['markdown.extensions.extra'])
+        html_content = markdown.markdown(
+            markdown_content,
+            extensions=['markdown.extensions.nl2br'])
 
         with open(output_file, 'w') as html_file:
             html_file.write(html_content)
+
 
 if __name__ == "__main__":
     # Check if the correct number of arguments is provided
