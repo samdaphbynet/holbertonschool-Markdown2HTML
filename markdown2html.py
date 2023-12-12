@@ -8,6 +8,7 @@ from os.path import isfile
 import sys
 import markdown
 
+
 def file_exist(argv):
     """Verify if the necessary files exist and if the correct number of arguments are provided."""
     if len(argv) < 3:
@@ -17,6 +18,7 @@ def file_exist(argv):
     if not isfile(argv[1]):
         print("Missing " + argv[1], file=sys.stderr)
         sys.exit(1)
+
 
 def markdown_to_html(markdown_file, output_file):
     """Converts a Markdown file to HTML."""
@@ -39,6 +41,7 @@ def markdown_to_html(markdown_file, output_file):
         # Handle the case where the specified Markdown file is not found
         print(f"Missing {markdown_file}", file=sys.stderr)
         sys.exit(1)
+
 
 if __name__ == "__main__":
     file_exist(sys.argv)
