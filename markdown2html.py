@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Markdown to HTML Converter """
 
-from os.path import isfile
 import sys
 import markdown
 
@@ -11,9 +10,6 @@ def markdown_to_html(markdown_file, output_file):
         print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
         sys.exit(1)
 
-    if not isfile(sys.argv[1]):
-        print("Missing " + sys.argv[1], file=sys.stderr)
-        sys.exit(1)
     try:
         # Read the file and convert it to HTML
         with open(markdown_file, 'r') as md_file:
