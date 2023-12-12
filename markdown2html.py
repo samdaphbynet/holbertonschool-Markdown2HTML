@@ -15,6 +15,7 @@ def markdown_to_html(markdown_file, output_file):
         print("Missing " + sys.argv[1], file=sys.stderr)
         sys.exit(1)
     try:
+        # Read the file and convert it to HTML
         with open(markdown_file, 'r') as md_file:
             markdown_content = md_file.read()
             html_content = markdown.markdown(markdown_content,
