@@ -5,13 +5,13 @@ This is a module that converts a Markdown file to HTML.
 
 import sys
 import os
-import markdown
+import re
 
-def markdown2html(markdown_file, output_file):
+def markdown2html():
     """
     This function checks if the number of arguments is less than 2 and if the Markdown file exists.
     If either of these conditions is not met, it prints an error message to STDERR and exits with status code 1.
-    Otherwise, it does nothing and exits with status code 0.
+    Otherwise, it reads the Markdown file, converts the headings to HTML, writes the result to the HTML file, and exits with status code 0.
     """
     if len(sys.argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
@@ -24,19 +24,22 @@ def markdown2html(markdown_file, output_file):
         print("Missing " + markdown_file, file=sys.stderr)
         sys.exit(1)
 
-    try:
-        with open(markdown_file, 'r') as md_file:
-            markdown_content = md_file.read()
-            html_content = markdown.markdown(markdown_content)
-            
-            with open(output_file, 'w') as html_file:
-                html_file.write(html_content)
-    except FileNotFoundError:
-        print(f"Missing {markdown_file}", file=sys.stderr)
-        sys.exit(1)
+    with open(markdown_file, 'r') as f:
+        lines = f.readlines()
 
-    # If the Markdown file exists, do nothing and exit with status code 0
+    html_lines = []
+    for line in lines:
+        match = re.match(r'(#{1,6})\s(.*)', line)
+        if match:
+            level = len(match.group(1))
+            content = match.group(2).strip()
+            html_lines.append('<h{0}>{1}</h{0}>'.format(level, content))
+
+    with open(html_file, 'w') as f:
+        f.write('\n'.join(html_lines))
+
+    # If the Markdown file exists and is successfully converted to HTML, do nothing and exit with status code 0
     sys.exit(0)
 
 if __name__ == "__main__":
-    markdown2html(sys.argv[1], sys.argv[2])
+    markdown2html()
