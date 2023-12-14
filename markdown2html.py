@@ -41,8 +41,8 @@ def markdown2html():
         with open(html_file, 'w') as f:
             f.write(html)
 
-    # If the Markdown file exists and is successfully converted to HTML,
-    # do nothing and exit with status code 0
+    """If the Markdown file exists and is successfully converted to HTML,
+    do nothing and exit with status code 0"""
     sys.exit(0)
 
 
