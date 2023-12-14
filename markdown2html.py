@@ -21,19 +21,23 @@ def markdown2html():
     markdown_file = sys.argv[1]
     html_file = sys.argv[2]
 
+    # Check if we have 3 arguments
     if len(sys.argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html",
               file=sys.stderr)
         sys.exit(1)
 
+    # check if the file exists
     if not os.path.exists(markdown_file):
         print("Missing " + markdown_file, file=sys.stderr)
         sys.exit(1)
 
+    # Read the file and parse it
     with open(markdown_file, 'r') as f:
         lines = f.read()
         html = markdown.markdown(lines)
 
+        # Write the html file
         with open(html_file, 'w') as f:
             f.write(html)
 
