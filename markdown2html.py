@@ -7,6 +7,9 @@ import sys
 import os
 import markdown
 
+"""
+Converts Markdown
+"""
 def markdown2html():
     """
     Converts a Markdown file to HTML.
@@ -43,6 +46,7 @@ def markdown2html():
     """If the Markdown file exists and is successfully converted to HTML,
     do nothing and exit with status code 0"""
     sys.exit(0)
+
 
 if __name__ == "__main__":
     markdown2html()
